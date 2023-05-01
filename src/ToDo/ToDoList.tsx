@@ -3,7 +3,7 @@ import "../App.css";
 import TodoTask from "./ToDoTask";
 import { ITask } from "./Interfaces";
 import { useDispatch, useSelector } from "react-redux";
-import { LIST, addNewTask } from "./taskSlice";
+import { LIST, addNewTask } from "../redux/taskSlice";
 
 const ToDoList: FC = () => {
   const [task, setTask] = useState<string>("");
@@ -46,7 +46,7 @@ const ToDoList: FC = () => {
         <button onClick={addTask}>Add Task</button>
       </div>
       <div className="todoList">
-        {TODOLIST.map((task: ITask, key: number) => {
+        {TODOLIST?.toDoList?.map((task: ITask, key: number) => {
           return <TodoTask key={key} task={task} completeTask={completeTask} />;
         })}
       </div>
